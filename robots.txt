@@ -1,0 +1,4 @@
+Sitemap: https://sanghavivraj.github.io/coffeecorner/sitemap.xml
+User-agent: *
+Disallow: /admin/
+Disallow: /test/
