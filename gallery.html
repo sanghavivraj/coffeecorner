@@ -6,22 +6,50 @@
   <title>Coffee Gallery – The Coffee Corner</title>
   <meta name="description" content="A gallery of our coffees, pastries, and brewing process at The Coffee Corner.">
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 16px;
+      background: #fafafa;
+    }
+
+    header, main {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    /* Flexbox gallery for single row of 4 images */
     .gallery {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* prevent wrapping */
       gap: 16px;
-      align-items: stretch;
+      justify-content: space-between;
+      margin-top: 20px;
+      overflow-x: auto; /* allow scroll if too small */
     }
+
     .gallery img {
-      flex: 1 1 260px;
-      max-width: 100%;
+      flex: 0 0 calc(25% - 12px); /* 4 images with gap adjustment */
+      max-width: calc(25% - 12px);
       height: auto;
       border-radius: 12px;
       object-fit: cover;
+      display: block;
     }
+
     .video-wrap {
-      margin-top: 24px;
+      margin-top: 40px;
     }
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    
   </style>
 </head>
 <body>
@@ -31,15 +59,15 @@
 
   <main>
     <section class="gallery">
-      <img src="images/espresso.jpg" alt="Rich espresso shot" width="800" height="533">
-      <img src="images/cappuccino.jpg" alt="Foamy cappuccino" width="800" height="533">
-      <img src="images/latte-art.jpg" alt="Latte with art" width="800" height="533">
-      <img src="images/croissant.jpg" alt="Fresh croissant" width="800" height="533">
+      <img src="images/espresso.jpg" alt="Rich espresso shot" width="800" height="533" loading="lazy" decoding="async">
+      <img src="images/cappuccino.jpg" alt="Foamy cappuccino" width="800" height="533" loading="lazy" decoding="async">
+      <img src="images/latte-art.jpg" alt="Latte with art" width="800" height="533" loading="lazy" decoding="async">
+      <img src="images/croissant.jpg" alt="Fresh croissant" width="800" height="533" loading="lazy" decoding="async">
     </section>
 
     <section class="video-wrap">
       <h2>How We Brew</h2>
-      <video id="brewVideo" width="800" height="450" controls poster="media/brew-poster.jpg" muted></video>
+      <video id="brewVideo" width="800" height="450" controls preload="none" poster="media/brew-poster.jpg" muted></video>
     </section>
   </main>
 
