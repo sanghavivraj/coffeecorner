@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Gallery – The Coffee Corner</title>
+  <meta name="description" content="A gallery of our coffees, pastries, and brewing process at The Coffee Corner.">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .gallery img {
+      flex: 1 1 260px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .video-wrap {
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Coffee Gallery</h1>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <img src="images/espresso.jpg" alt="Rich espresso shot" width="800" height="533">
+      <img src="images/cappuccino.jpg" alt="Foamy cappuccino" width="800" height="533">
+      <img src="images/latte-art.jpg" alt="Latte with art" width="800" height="533">
+      <img src="images/croissant.jpg" alt="Fresh croissant" width="800" height="533">
+    </section>
+
+    <section class="video-wrap">
+      <h2>How We Brew</h2>
+      <video id="brewVideo" width="800" height="450" controls poster="media/brew-poster.jpg" muted></video>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var video = document.getElementById('brewVideo');
+      video.setAttribute('data-src', 'media/brew.mp4');
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!video.getAttribute('src')) {
+              video.setAttribute('src', video.getAttribute('data-src'));
+            }
+            io.unobserve(video);
+          }
+        });
+      }, { rootMargin: '200px' });
+
+      io.observe(video);
+    });
+  </script>
+</body>
+</html>
